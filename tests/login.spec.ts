@@ -1,19 +1,12 @@
 import { test, expect } from '@playwright/test';
 
-test('Check main page title', async ({ page }) => {
-  await page.goto('http://php.testsparker.com/');
-
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Invicti Test Web Site - PHP/);
-});
-
-test('Go to login page and check page elements', async ({ page }) => {
+test('Check Login page elements', async ({ page }) => {
   await page.goto('http://php.testsparker.com/');
 
   // Click the Login button.
   await page.getByRole('link', { name: 'Login', exact: true }).click();
 
-  // Check page title as "Login Area".
+  // Check heading
   await expect(page.getByRole('heading', { name: 'Login Area' })).toBeVisible();
 
   // Check information text paragraph.
