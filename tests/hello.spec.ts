@@ -8,4 +8,7 @@ test('Check Hello page elements', async ({ page }) => {
 
   // Check page heading
   await expect(page.getByRole('heading', { name: 'Hello Service' })).toBeVisible();
+
+  //Check reset bar text
+  await expect(page.locator('#resetbar')).toHaveText('This website is automatically reset at every midnight (00:00 - UTC).');
 });
