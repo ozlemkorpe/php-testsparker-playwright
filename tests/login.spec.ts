@@ -1,11 +1,12 @@
 import { test, expect } from '@playwright/test';
 
-test('Check Login page elements', async ({ page }) => {
+test.beforeEach(async({page}) => {
   await page.goto('http://php.testsparker.com/');
-
-  // Click the Login button.
   await page.getByRole('link', { name: 'Login', exact: true }).click();
+});
 
+test('Check Login page elements', async ({ page }) => {
+  
   // Check heading
   await expect(page.getByRole('heading', { name: 'Login Area' })).toBeVisible();
 
@@ -30,8 +31,6 @@ test('Check Login page elements', async ({ page }) => {
 
 
 test('Fill the form and login', async ({ page }) => {
-  await page.goto('http://php.testsparker.com/auth/login.php');
-
   // Fill username field
   await page.locator('input[name="username"]').fill('admin');
 
